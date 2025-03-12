@@ -71,5 +71,8 @@ Select
     numrun_emp||' '||dvrun_emp "Run Empleado",
      pnombre_emp|| ' '||snombre_emp||' '|| appaterno_emp||' '|| apmaterno_emp "Nombre Empleado",
      sueldo_base "SUELDO BASE",
-     fecha_nac "FECHA NACIMIENTO"
-From empleado;
+     fecha_nac "FECHA NACIMIENTO",
+     substr(pnombre_emp,1,3)||''||length(pnombre_emp) ||'*'|| substr(sueldo_base,-1,1)||''||dvrun_emp||Round(months_between(sysdate, fecha_contrato) / 12) "Nombre Usuario",
+    substr(numrun_emp,3,1)||extract( year from fecha_contrato)+2||substr(sueldo_base,-3,3)-1||substr(appaterno_emp,-2,2)||8 "Clave"--Extract(month from sysdate) 
+From empleado
+order by appaterno_emp asc;
