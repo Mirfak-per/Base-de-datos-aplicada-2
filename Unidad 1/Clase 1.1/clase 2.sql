@@ -138,9 +138,37 @@ UNDEFINE Valor; --limpia valores &&
 -- 9 = Muestra los numeros que tiene
 -- 0 = rellena con 0 lo faltante
 
--- casp 7
+/*Funciones de Grupo*/
+
+--Count: Contar
+--sum: sumar
+--avg: promedio
+--max: maximo
+--min: minimo
 
 
+Select 
+    Count(sueldo_base) "Contador",
+    Sum(Sueldo_Base) "Suma",
+    round(avg(sueldo_base)) "Promedio",
+    max(sueldo_base) "Maximo",
+    min(sueldo_base) "minimo"
+From Empleado;
+
+--group by: permite agrupar por uno o mas atributos
+Select
+    sexo,
+    Count(*) "cantidad",
+    sum(sueldo_base) "suma",
+    round(avg(sueldo_Base)) "promedio"
+From empleado
+Group By sexo;
 
 
+Select 
+    id_tipo_cli "tipo CLiete",
+    count(*) "cantidad"
+from cliente
+group by id_tipo_cli
+order by 2 desc;
 
